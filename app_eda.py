@@ -6,7 +6,8 @@ import seaborn as sb
 def run_eda():
     st.subheader('데이터 분석')
 
-    heart_df = pd.read_csv('data/heart.csv',index_col=0 ,encoding='ISO-8859-1')
+    heart_df = pd.read_csv('data/heart_2020_cleaned.csv',encoding='ISO-8859-1')
+    
     
 
     radio_menu = ['데이터프레임','통계치']

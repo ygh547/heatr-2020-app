@@ -6,7 +6,7 @@ import seaborn as sb
 def run_eda():
     st.subheader('데이터 분석')
 
-    heart_df = pd.read_csv('data/heart_2020_cleaned.csv',encoding='ISO-8859-1')
+    heart_df = pd.read_csv('data/heart_2020.csv',index_col=0,encoding='ISO-8859-1')
     
     
 
@@ -19,7 +19,7 @@ def run_eda():
         st.dataframe(heart_df.describe())
 
     col_list = heart_df.columns
-    selected_list = st.multiselect('컬럼들 선택',col_list)
+    selected_list = st.multiselect('컬럼을 클릭하여 상관계수 알아보기',col_list)
 
     if len(selected_list) > 1:
 

@@ -1,4 +1,4 @@
-from cProfile import run
+# from cProfile import run
 import streamlit as st
 from tkinter import Menu
 from app_eda import run_eda

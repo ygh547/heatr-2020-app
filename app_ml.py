@@ -4,9 +4,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import sklearn
-
+from sklearn.preprocessing import MinMaxScaler
+from codecs import getencoder
 import joblib
-from traitlets import CInt
 
 
 
@@ -18,33 +18,33 @@ def run_ml():
     # 이 예에서는, 인공지능파일, X 스케일러 파일, y 스케일러파일
     # 3개를 불러와야 한다.
 
-    regressor = joblib.load('data/classifier1.pkl')
+    regressor = joblib.load('data/regressor (1).pkl')
     scaler_X = joblib.load('data/scaler_X.pkl')
     scaler_y =joblib.load('data/scaler_y.pkl')
 
     HeartDisase = st.radio('심장질환을 유무를 선택해주세요.',['있다','없다'])
     if HeartDisase == '있다' :
-        HeartDisase = 1
+        HeartDisase = 40
     else :
-        HeartDisase = 0
+        HeartDisase = 10
     Smoking = st.radio('흡연 유무를 선택해주세요.',['흡연','비흡연'])
-    if HeartDisase == '흡연' :
-        Smoking = 1
+    if Smoking == '흡연' :
+        Smoking = 20
     else :
-        Smoking = 0
+        Smoking = 5
     AlcoholDrinking = st.radio('음주하는지에 대한 유무를 선택해주세요.',['음주','금주'])
     if AlcoholDrinking == '음주' :
-        AlcoholDrinking = 1
+        AlcoholDrinking = 10
     else :
-        AlcoholDrinking = 0
+        AlcoholDrinking = 5
     Stoke = st.radio('과거부터 현재까지 뇌졸중질병 유무를 선택해주세요.',['있다','없다'])
     if Stoke == '있다' :
-        Stoke = 1
+        Stoke = 20
     else :
         Stoke = 0
     age = st.number_input('나이 입력',0,120)
     if age > 70 :
-        age = 1
+        age = 10
     else :
         age = 0
 
@@ -64,8 +64,23 @@ def run_ml():
         # 4. 예측한 값을, 원상복구 시킨다.
         y_pred = scaler_y.inverse_transform(y_pred)
 
-        y_pred = round(y_pred[0,0])
-        st.write('당신의 점수는'+ str(y_pred) + '점입니다.')    
+
+        
+        
+        y_pred = [HeartDisase + Smoking + AlcoholDrinking + Stoke + age]
+        st.write('당신의 점수는'+ str(y_pred) + '점입니다.')
+       
+        y_pred1 = int(HeartDisase) + int(Smoking) + int(AlcoholDrinking) + int(Stoke) + int(age)
+        
+        if y_pred1 >= 80 :
+           st.write('고객님은 심장질환이 의심됩니다. 병원에서 검진받기 바랍니다.')
+        elif y_pred1 >= 60 :
+            st.write('고객님은 심장질환 위험군의 속합니다. 병원에서 검진받기 바랍니다.')
+        elif y_pred1 >= 40 :
+            st.write('고객님은 건강관리를 잘하신거같습니다. 꾸준히 관리해주세요.')
+        elif y_pred1 >= 0:
+            st.write('고객님은 보험걱정 없으실거같아요. 꾸준히 관리해주세요.')
+        str(y_pred1)    
     
 
     

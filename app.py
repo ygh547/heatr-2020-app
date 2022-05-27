@@ -11,9 +11,10 @@ from app_ml import run_ml
 def main():
 
     st.title('건강상태 예측해서 사전에 알려주기')
-
+    st.sidebar.image('data/의사.jpg',use_column_width=True)
     menu = ['Home', 'EDA', 'ML']
     choice = st.sidebar.selectbox('메뉴 선택', menu)
+    
 
     if choice == menu[0] :
         run_home()

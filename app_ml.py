@@ -37,7 +37,7 @@ def run_ml():
         AlcoholDrinking = 10
     else :
         AlcoholDrinking = 5
-    Stoke = st.radio('과거부터 현재까지 뇌졸중질병 유무를 선택해주세요.',['있다','없다'])
+    Stoke = st.radio('최근 10년안에 뇌졸중질병 유무를 선택해주세요.',['있다','없다'])
     if Stoke == '있다' :
         Stoke = 20
     else :

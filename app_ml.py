@@ -24,17 +24,17 @@ def run_ml():
 
     HeartDisase = st.radio('심장질환을 유무를 선택해주세요.',['있다','없다'])
     if HeartDisase == '있다' :
-        HeartDisase = 40
+        HeartDisase = 30
     else :
         HeartDisase = 10
     Smoking = st.radio('흡연 유무를 선택해주세요.',['흡연','비흡연'])
     if Smoking == '흡연' :
-        Smoking = 20
+        Smoking = 25
     else :
         Smoking = 5
     AlcoholDrinking = st.radio('음주하는지에 대한 유무를 선택해주세요.',['음주','금주'])
     if AlcoholDrinking == '음주' :
-        AlcoholDrinking = 10
+        AlcoholDrinking = 15
     else :
         AlcoholDrinking = 5
     Stoke = st.radio('최근 10년안에 뇌졸중질병 유무를 선택해주세요.',['있다','없다'])
@@ -74,9 +74,9 @@ def run_ml():
         
         if y_pred1 >= 80 :
            st.write('고객님은 심장질환이 의심됩니다. 병원에서 검진받기 바랍니다.')
-        elif y_pred1 >= 60 :
+        elif y_pred1 >= 50 :
             st.write('고객님은 심장질환 위험군의 속합니다. 병원에서 검진받기 바랍니다.')
-        elif y_pred1 >= 40 :
+        elif y_pred1 >= 20 :
             st.write('고객님은 건강관리를 잘하신거같습니다. 꾸준히 관리해주세요.')
         elif y_pred1 >= 0:
             st.write('고객님은 보험걱정 없으실거같아요. 꾸준히 관리해주세요.')

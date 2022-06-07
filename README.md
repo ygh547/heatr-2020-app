@@ -10,3 +10,6 @@ kaggle : https://www.kaggle.com/
 
 # 참고자료
 심장 질환의 개인 주요 지표 : https://www.kaggle.com/datasets/kamilpytlak/personal-key-indicators-of-heart-disease
+
+# URL
+http://13.125.207.216:8502/

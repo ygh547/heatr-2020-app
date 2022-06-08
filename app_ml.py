@@ -62,6 +62,7 @@ def run_ml():
         y_pred = regressor.predict(new_data)
         
         # 4. 예측한 값을, 원상복구 시킨다.
+        
         y_pred = scaler_y.inverse_transform(y_pred)
 
 
